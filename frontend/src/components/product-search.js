@@ -20,7 +20,7 @@ const ProductSearch = ({ searchQuery, setSearchQuery, openModal }) => {
         value={searchQuery}
         onChange={e => setSearchQuery(e.target.value)}
         type="text"
-        placeholder="Search"
+        placeholder="Izlash"
         className="border-b-2 w-full p-2 focus:outline-none bg-transparent"
       />
     </div>

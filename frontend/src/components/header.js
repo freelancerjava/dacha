@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
-import StrapiLogo from "~/images/strapi.png"
+import StrapiLogo from "~/images/logo.png"
 
 const Header = ({ setOpenModal }) => {
   return (
@@ -13,16 +13,16 @@ const Header = ({ setOpenModal }) => {
         </Link>
         <div className="flex flex-col items-center md:flex-row">
           <Link className="mx-2 mb-2 md:mb-0 text-lg" to="/">
-            Categories
+            Kategoriyalar
           </Link>
           <Link className="mx-2 mb-2 md:mb-0 text-lg" to="/products">
-            Products
+            Dachalar
           </Link>
           <button
             className="mx-2 mb-2 md:mb-0 text-lg"
             onClick={() => setOpenModal(true)}
           >
-            Search
+            Izlash
           </button>
         </div>
       </div>

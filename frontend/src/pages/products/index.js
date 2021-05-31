@@ -13,12 +13,12 @@ const SearchPage = ({
 }) => {
   const flatProducts = edges.map(({ node }) => node)
 
-  const seo = { title: "Products" }
+  const seo = { title: "Dachalar" }
 
   return (
     <Layout>
       <SEO seo={seo} />
-      <PageHeading>Products</PageHeading>
+      <PageHeading>Dachalar</PageHeading>
       <ProductList products={flatProducts} />
     </Layout>
   )

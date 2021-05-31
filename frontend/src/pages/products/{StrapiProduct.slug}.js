@@ -34,7 +34,7 @@ const ProductPage = ({ data }) => {
             <h1 className="text-4xl mb-1">{product.title}</h1>
             {product.price && (
               <div className="text-sm flex justify-between">
-                <p className="font-extralight">Price</p>
+                <p className="font-extralight">Narxi</p>
                 <p>{formatPrice(product.price)}</p>
               </div>
             )}
@@ -62,7 +62,7 @@ const ProductPage = ({ data }) => {
         </div>
       </div>
       <div className="my-6 mb-24">
-        <h1 className="text-4xl font-bold text-center">Product Description</h1>
+        <h1 className="text-4xl font-bold text-center">Qo'shimcha ma'lumotlar</h1>
         <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
         <ReactMarkdown
           className="prose md:w-4/5 m-auto"
@@ -71,7 +71,7 @@ const ProductPage = ({ data }) => {
       </div>
       {product.relatedProducts.length > 0 && (
         <div className="flex flex-col my-6 mb-24">
-          <h2 className="text-3xl font-bold text-center">Related Products</h2>
+          <h2 className="text-3xl font-bold text-center">Bog'langan dachalar</h2>
           <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
           <ProductList
             products={product.relatedProducts}

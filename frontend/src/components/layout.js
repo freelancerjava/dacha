@@ -6,6 +6,7 @@ import SearchResults from "~/components/search-results"
 import Footer from "~/components/footer"
 
 import Header from "~/components/header"
+import MyHeader from "~/components/MyHeader"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,10 +21,11 @@ const Layout = ({ children }) => {
 
   return (
     <div className="bg-gray-50 relative">
-      <Header
+      {/* <Header
         setOpenModal={setOpenModal}
-        siteName={data.strapiGlobal.siteName || `Strapi`}
-      />
+        siteName={data.strapiGlobal.siteName || `Dachalar`}
+      /> */}
+      <MyHeader />
       <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-6 md:p-10">
         <main className="flex-1">{children}</main>
         <Footer />

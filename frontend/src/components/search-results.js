@@ -51,13 +51,13 @@ const SearchResults = ({ setOpenModal, openModal }) => {
       </div>
       {results.length > 0 && (
         <div>
-          <PageHeading>Search Results</PageHeading>
+          <PageHeading>Izlash natijalari</PageHeading>
           <ProductList products={results} />
         </div>
       )}
       {hasNoResults && (
         <p className="italic text-sm font-light mt-2">
-          Your search didn't return any results
+          Izlangan ma'lumotlar topilmadi!
         </p>
       )}
     </div>

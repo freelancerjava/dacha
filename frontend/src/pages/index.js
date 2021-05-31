@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import "../styles/main.scss"
+
 import Layout from "~/components/layout"
 import SEO from "~/components/seo"
 import CategoryList from "~/components/category-list"
@@ -12,7 +14,7 @@ const IndexPage = ({ data: { allStrapiCategory } }) => {
   return (
     <Layout>
       <SEO seo={seo} />
-      <PageHeading>Categories</PageHeading>
+      <PageHeading>Kategoriyalar</PageHeading>
       <CategoryList categories={categories} />
     </Layout>
   )
