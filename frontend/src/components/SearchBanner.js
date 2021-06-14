@@ -42,7 +42,7 @@ const onFinishFailed = (errorInfo) => {
 const SearchBanner = ({ categories }) => {
 
     const data = useStaticQuery(graphql`
-        query LocalSearchQuery {
+        query MyLocalSearchQuery {
             localSearchPages {
                 index
                 store
