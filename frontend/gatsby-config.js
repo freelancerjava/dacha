@@ -35,7 +35,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.API_URL || `http://localhost:1337`,
+        apiURL: process.env.API_URL || `http://response.uz:1337`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`product`, `category`],
         singleTypes: [`global`],
@@ -94,7 +94,7 @@ module.exports = {
         // List of keys to index. The values of the keys are taken from the
         // normalizer function below.
         // Default: all fields
-        index: ["title", "description"],
+        index: ["title", "description", "price", "slug"],
         // List of keys to store and make available in your UI. The values of
         // the keys are taken from the normalizer function below.
         // Default: all fields

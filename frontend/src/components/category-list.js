@@ -6,7 +6,7 @@ import Image from "~/components/image"
 import Card from "~/components/styled/card"
 
 const CategoryList = ({ categories }) => (
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
     {categories.map(({ node }) => {
       return (
         <Card key={node.id}>
