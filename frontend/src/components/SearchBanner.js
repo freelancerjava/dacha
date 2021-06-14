@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, Input, Button, Select } from 'antd';
 import LocationSvg from '../images/svg/LocationSvg';
-import { useStaticQuery, navigate } from 'gatsby';
+import { useStaticQuery, navigate, graphql } from 'gatsby';
 import { useFlexSearch } from 'react-use-flexsearch';
 import PageHeading from './styled/page-heading';
 import ProductList from './product-list';
