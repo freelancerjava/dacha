@@ -14,7 +14,7 @@ const Product = ({ node }) => {
         <div className='product'>
             <div className="product-image">
                 <ImageCarousel images={[node.image,...node.pics.map(item=>item.formats.small)]}/>
-                <div className="overlay"></div>
+                {/* <div className="overlay"></div> */}
                 <span className='title'>{node.category && node.category.name || ''}</span>
                 <span className='price'>от {node.price} сум</span>
                 <LikeSvg selected={liked} select={() => {

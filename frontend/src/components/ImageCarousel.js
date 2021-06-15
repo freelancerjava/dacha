@@ -15,7 +15,7 @@ const ImageCarousel = ({ images }) => {
 
     return (
         <>
-            <Carousel ref={caruselRef} afterChange={onChange} dots={false}>
+            <Carousel ref={caruselRef} afterChange={onChange} dots={false} draggable={true}>
                 {images.map((item, key) => {
                     return (
                         <div key={key}>
