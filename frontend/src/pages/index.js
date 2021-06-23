@@ -82,7 +82,7 @@ export const query = graphql`
           pics {
             id
             formats {
-              small {
+              medium {
                 childImageSharp {
                   gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
                 }

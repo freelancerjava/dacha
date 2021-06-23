@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import ReactMarkdown from "react-markdown"
 import { graphql } from "gatsby"
 
@@ -8,6 +8,9 @@ import SEO from "~/components/seo"
 import Image from "~/components/image"
 
 import { formatPrice } from "~/helpers/currency-formatter"
+import GridSvg from "../../images/svg/GridSvg"
+import ListSvg from "../../images/svg/ListSvg"
+import Product from "../../components/Product"
 
 const ProductPage = ({ data }) => {
   const product = data.strapiProduct
@@ -15,6 +18,9 @@ const ProductPage = ({ data }) => {
   const seo = { title: product.title, image: product.image.publicURL }
 
   const flexJustify = product.specifications.length > 0 ? "between" : "center"
+
+  const flatProducts = product.relatedProducts
+  const [grid, setgrid] = useState(true);
 
   return (
     <Layout>
@@ -70,7 +76,7 @@ const ProductPage = ({ data }) => {
             children={product.description}
           />
         </div>
-        {product.relatedProducts.length > 0 && (
+        {/* {product.relatedProducts.length > 0 && (
           <div className="flex flex-col my-6 mb-24">
             <h2 className="text-3xl font-bold text-center">Bog'langan dachalar</h2>
             <hr className="mt-6 mb-12 m-auto w-24 border-t-4" />
@@ -79,7 +85,30 @@ const ProductPage = ({ data }) => {
               gridCols="grid-cols-1 md:grid-cols-2"
             />
           </div>
-        )}
+        )} */}
+
+        {flatProducts.length > 0 && <div className="top-list">
+          <div className='title'>
+            <h3>Похожие объявления</h3>
+            <span>
+              <GridSvg selected={grid} select={() => {
+                setgrid(true)
+              }} />
+              <ListSvg selected={!grid} select={() => {
+                setgrid(false)
+              }} />
+            </span>
+          </div>
+
+          <div className="products">
+            {flatProducts.map((node) => {
+              return (
+                <Product node={node} />
+              )
+            })}
+
+          </div>
+        </div>}
       </div>
     </Layout>
   )
@@ -103,6 +132,16 @@ export const query = graphql`
         key
         value
       }
+      pics {
+        id
+        formats {
+          medium {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            }
+          }
+        }
+      } 
       relatedProducts {
         title
         price

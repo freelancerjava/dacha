@@ -54,35 +54,34 @@ export const searchPageQuery = graphql`
     allStrapiProduct {
       edges {
         node {
-            specifications {
-                key
-                value
-              }
-              title
-              price
-              slug
-              id
-              description
-              image {
+          specifications {
+            key
+            value
+          }
+          title
+          price
+          slug
+          id
+          description
+          image {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            }
+          }
+          category{
+            name
+            slug
+          }
+          pics {
+            id
+            formats {
+              medium {
                 childImageSharp {
                   gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
                 }
               }
-              category{
-                name
-                slug
-              }
-    
-              pics {
-                id
-                formats {
-                  small {
-                    childImageSharp {
-                      gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
-                    }
-                  }
-                }
-              }
+            }
+          }  
         }
       }
     }
