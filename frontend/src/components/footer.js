@@ -2,27 +2,53 @@ import React from "react"
 
 import github from "~/images/github.svg"
 import twitter from "~/images/twitter.svg"
-import facebook from "~/images/facebook.svg"
+import PrimaryBtn from "./PrimaryBtn"
+import { graphql, useStaticQuery, Link } from "gatsby"
+
+import logo from '~/images/foot-logo.png'
+import facebook from '~/images/facebook.png'
+import instagram from '~/images/instagram.png'
+import telegram from '~/images/telegram.png'
+import vk from '~/images/vk.png'
 
 const Footer = () => {
+
+  const data = useStaticQuery(graphql`
+    query Cats {
+      allStrapiCategory {
+        edges {
+          node {
+            slug
+            name
+          }
+        }
+      }
+    }
+  `)
+
   return (
-    <footer className="flex justify-between pb-4">
-      <p className="text-sm font-semibold text-gray-600">
-        Dachalar starter
-      </p>
-      <div className="flex gap-3 ml-4">
-        <a href="https://twitter.com/freelancerjava" className="max-w-xs ml-4">
-          <img src={twitter} alt="Twitter" />
-        </a>
-        <a href="https://facebook.com/freelancerjava" className="ml-3">
-          <img src={facebook} alt="Facebook" />
-        </a>
-        <a
-          href="https://github.com/freelancerjava"
-          className="ml-3"
-        >
-          <img src={github} alt="GitHub" />
-        </a>
+    <footer className="footer">
+      <PrimaryBtn text='Добавить свой объект' type="primary" />
+
+      <ul className='site-map'>
+        {data.allStrapiCategory.edges.map(({ node }) => {
+          return (
+            <li><Link to={`/categories/${node.slug}`} key={node.slug}>{node.name}</Link></li>
+          )
+        })}
+      </ul>
+
+      <div className='foot-nav'>
+        <div className='logo'>
+          <img src={logo} />
+          <span>© 2021 TopDacha</span>
+        </div>
+        <div className='socials'>
+          <img src={facebook} />
+          <img src={instagram} />
+          <img src={telegram} />
+          <img src={vk} />
+        </div>
       </div>
     </footer>
   )

@@ -9,13 +9,13 @@ const SEO = ({ seo = {} }) => {
       strapiGlobal {
         siteName
         favicon {
-          publicURL
+          url
         }
         defaultSeo {
           metaTitle
           metaDescription
           shareImage {
-            publicURL
+            url
           }
         }
       }
@@ -61,7 +61,7 @@ const SEO = ({ seo = {} }) => {
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.API_URL || "http://localhost:8000") +
-        fullSeo.shareImage.publicURL
+        fullSeo.shareImage.url
       tags.push(
         {
           name: "image",
@@ -98,7 +98,7 @@ const SEO = ({ seo = {} }) => {
       link={[
         {
           rel: "icon",
-          href: favicon.publicURL,
+          href: favicon.url,
         },
       ]}
     />

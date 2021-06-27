@@ -14,10 +14,10 @@ const MenuItem = ({name, select}) => {
             case 'chat': return(<Link to='/chat' activeClassName='active-page' ><div><MenuChatSvg selected={select}/><span>Чат</span></div></Link>)
         }
 }
-const Navbar = () => {
+const Navbar = (props) => {
     const [select, setselect] = useState(false);
     return (
-        <ul className='navbar'>
+        <ul className='navbar' {...props} ref={props.ref}>
             <li><MenuItem name='home' select={select} /></li>           
             <li><MenuItem name='category' select={select} /></li>           
             <li><MenuItem name='like' select={select} /></li>           

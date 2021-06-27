@@ -8,8 +8,10 @@ const Image = ({ image, className, alt }) => {
     query {
       strapiGlobal {
         placeHolder {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+          localFile{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            }
           }
         }
       }

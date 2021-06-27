@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Menu = () => {
-    const [open, setOpen] = React.useState(false);
+const Menu = ({open, setOpen}) => {
     const node = React.useRef();
     return (
         <div className={`menu-btn ${open ? 'open':''}`} onClick={()=>{

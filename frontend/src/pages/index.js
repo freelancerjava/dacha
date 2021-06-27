@@ -39,15 +39,17 @@ const IndexPage = ({ data: { allStrapiCategory, allStrapiProduct } }) => {
 
 export const query = graphql`
   query CategoriesQuery {
-    allStrapiCategory(limit: 4) {
+    allStrapiCategory(limit: 4, filter: {image: {id: {ne: null}}}) {
       edges {
         node {
           name
           id
           slug
           image {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            localFile{
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+              }
             }
           }
           products{
@@ -70,26 +72,23 @@ export const query = graphql`
           id
           description
           image {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+            localFile{
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+              }
             }
           }
           category{
             name
             slug
           }
-
           pics {
-            id
-            formats {
-              medium {
-                childImageSharp {
-                  gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
-                }
+            localFile{
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
               }
             }
-          }
-          
+          }          
         }
       }
     }

@@ -18,7 +18,7 @@ const CategoryList = ({ categories }) => {
                             <Image
                                 alt="Category Image"
                                 className="rounded-t-md border-gray-200	 border-b"
-                                image={node.image}
+                                image={node.image.localFile}
                             />
                             <span className="count">{node.products.length} объялений</span>
                             <Link to={`/categories/${node.slug}`}>{node.name}</Link>

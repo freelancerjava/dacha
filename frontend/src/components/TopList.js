@@ -24,7 +24,7 @@ const TopList = ({ topproducts }) => {
             <div className="products">
                 {topproducts.map(({ node }) => {
                     return (
-                        <Product node={node}/>
+                        <Product node={node} />
                     )
                 })}
 

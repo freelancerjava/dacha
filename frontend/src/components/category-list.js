@@ -11,11 +11,11 @@ const CategoryList = ({ categories }) => (
       return (
         <Card key={node.id}>
           <Link to={`/categories/${node.slug}`}>
-            <Image
+            {node.image && <Image
               alt="Category Image"
               className="rounded-t-md border-gray-200	 border-b"
-              image={node.image}
-            />
+              image={node.image.localFile}
+            />}
             <p className="px-4 py-6">{node.name}</p>
           </Link>
         </Card>

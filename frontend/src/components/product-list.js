@@ -17,7 +17,7 @@ const ProductList = ({ products, gridCols }) => {
               <Image
                 alt="Product Image"
                 className="rounded-t-md border-gray-200	 border-b"
-                image={product.image}
+                image={product.image.localFile}
               />
               <div className="px-4 py-6">
                 <p>{product.title}</p>

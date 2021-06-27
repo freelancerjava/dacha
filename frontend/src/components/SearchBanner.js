@@ -7,6 +7,7 @@ import PageHeading from './styled/page-heading';
 import ProductList from './product-list';
 
 import { useOnClickOutside, useOnKeypress } from "~/helpers/hooks"
+import PrimaryBtn from './PrimaryBtn';
 
 const { Option } = Select;
 
@@ -122,9 +123,7 @@ const SearchBanner = ({ categories }) => {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        Найти
-                    </Button>
+                    <PrimaryBtn text='Найти' type="primary" htmlType="submit"/>                        
                 </Form.Item>
             </Form>
 

@@ -9,11 +9,12 @@ import ImageCarousel from './ImageCarousel';
 
 const Product = ({ node }) => {
     const [liked, setliked] = useState(false);
+    const pics = node.pics && [node.image.localFile, ...node.pics.map(item=>item.localFile)] || [node.image.localFile]
 
     return (
         <div className='product'>
             <div className="product-image">
-                <ImageCarousel images={[node.image, ...node.pics.map(item=>item.formats.small)]}/>
+                <ImageCarousel images={pics} arrows={true} count={true}/>
                 {/* <div className="overlay"></div> */}
                 <span className='title'>{node.category && node.category.name || ''}</span>
                 <span className='price'>от {node.price} сум</span>

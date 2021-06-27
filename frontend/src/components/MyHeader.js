@@ -11,8 +11,7 @@ import CloseSvg from '../images/svg/CloseSvg';
 
 import { useOnClickOutside, useOnKeypress } from "~/helpers/hooks"
 
-const MyHeader = () => {
-
+const MyHeader = ({open, setOpen}) => {
     
     const [call, setcall] = useState(false);
 
@@ -31,7 +30,7 @@ const MyHeader = () => {
             <div className='header'>
                 <div className="left">
                     <span className='menu'>
-                        <Menu />
+                        <Menu open={open} setOpen={setOpen} />
                     </span>
                     <Link className="mx-2 text-lg mb-4" to="/">
                         <img src={logo} alt="strapi catalog logo" className="logo" />
@@ -54,7 +53,7 @@ const MyHeader = () => {
                 </div>
                 <div className='num-title'>Номер телефона</div>
                 <div className='number'>998 97 455-59-42</div>
-                <a className='button'>Позвонить</a>
+                <a href='tel:+998974555942' className='button'>Позвонить</a>
 
             </div>
         </>

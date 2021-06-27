@@ -20,6 +20,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     "gatsby-plugin-postcss",
+    "gatsby-plugin-react-leaflet",
+    // {
+    //   resolve: 'gatsby-plugin-react-leaflet',
+    //   options: {
+    //     linkStyles: true // (default: true) Enable/disable loading stylesheets via CDN
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -35,9 +42,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: process.env.API_URL || `http://response.uz:1337`,
+        apiURL: process.env.API_URL || `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`product`, `category`],
+        collectionTypes: [`product`, `category`, 'features'],
         singleTypes: [`global`],
       },
     },
@@ -79,9 +86,11 @@ module.exports = {
                   slug
                   description
                   image {
-                    childImageSharp {
-                      gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
-                    }
+                    localFile{
+                      childImageSharp {
+                        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, aspectRatio: 1.3)
+                      }
+                    }                    
                   }
                 }
               }

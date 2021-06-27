@@ -5,7 +5,7 @@ import Image from "~/components/image"
 import LeftArrowSvg from '../images/svg/LeftArrowSvg';
 import RightArrowSvg from '../images/svg/RightArrowSvg';
 
-const ImageCarousel = ({ images }) => {
+const ImageCarousel = ({ images, arrows, count, dots }) => {
     const caruselRef = useRef()
     const [pos, setpos] = useState(0);
 
@@ -15,7 +15,7 @@ const ImageCarousel = ({ images }) => {
 
     return (
         <>
-            <Carousel ref={caruselRef} afterChange={onChange} dots={false} draggable={true}>
+            <Carousel ref={caruselRef} afterChange={onChange} dots={dots || false} draggable={true}>
                 {images.map((item, key) => {
                     return (
                         <div key={key}>
@@ -27,13 +27,15 @@ const ImageCarousel = ({ images }) => {
                     )
                 })}
             </Carousel>
-            <span className='count'>{pos+1}/{images.length}</span>
+            {count && <span className='count'>{pos+1}/{images.length}</span>}
+            {arrows && <>
             <span className='left-arrow' onClick={()=>{
                 caruselRef.current.prev()
             }}><LeftArrowSvg/></span>
             <span className='right-arrow' onClick={()=>{
                 caruselRef.current.next()
             }}><RightArrowSvg/></span>
+            </>}
         </>
     );
 };
