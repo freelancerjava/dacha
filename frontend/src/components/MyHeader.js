@@ -11,13 +11,17 @@ import CloseSvg from '../images/svg/CloseSvg';
 
 import { useOnClickOutside, useOnKeypress } from "~/helpers/hooks"
 
-const MyHeader = ({open, setOpen}) => {
-    
-    const [call, setcall] = useState(false);
+const MyHeader = ({ open, setOpen, slideContent, setslideContent }) => {
 
     const modal = useRef()
-    useOnClickOutside(modal, () => setcall(false))
-    useOnKeypress(() => setcall(false))
+    useOnClickOutside(modal, () => setslideContent({
+        ...slideContent,
+        show: false
+    }))
+    useOnKeypress(() => setslideContent({
+        ...slideContent,
+        show: false
+    }))
 
     const { Option } = Select;
 
@@ -42,19 +46,28 @@ const MyHeader = ({open, setOpen}) => {
                     <Option value="uz"><span className="lang-opt"><img src={russia} /> EN </span></Option>
                     <Option value="en"><span className="lang-opt"><img src={russia} /> UZ </span></Option>
                 </Select> */}
-                    <CallSvg onClick={() => setcall(!call)} />
+                    <CallSvg onClick={() => {
+                        setslideContent({
+                            ...slideContent,
+                            content: SlideContact,
+                            show: true
+                        })
+                    }
+                    } />
                 </div>
             </div>
-            <div ref={modal} className={`contacts ${call ? 'move' : 'movedown'}`}>
+            <div ref={modal} className={`contacts ${slideContent.show ? 'move' : 'movedown'}`}>
                 <span className='dragger'></span>
                 <div className='title'>
-                    <span className='close'><CloseSvg onClick={() => setcall(!call)} /></span>
-                    <span>Контакты</span>
+                    <span className='close'><CloseSvg
+                        onClick={() => setslideContent({
+                            ...slideContent,
+                            show: false
+                        })} />
+                    </span>
+                    <span>{slideContent.title}</span>
                 </div>
-                <div className='num-title'>Номер телефона</div>
-                <div className='number'>998 97 455-59-42</div>
-                <a href='tel:+998974555942' className='button'>Позвонить</a>
-
+                <slideContent.content />
             </div>
         </>
     );
@@ -62,3 +75,13 @@ const MyHeader = ({open, setOpen}) => {
 
 
 export default MyHeader;
+
+const SlideContact = () => {
+    return (
+        <div className='contact-container'>
+            <div className='num-title'>Номер телефона</div>
+            <div className='number'>998 97 455-59-42</div>
+            <a href='tel:+998974555942' className='button'>Позвонить</a>
+        </div>
+    );
+};

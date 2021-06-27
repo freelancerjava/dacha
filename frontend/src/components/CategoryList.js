@@ -14,7 +14,7 @@ const CategoryList = ({ categories }) => {
                 {categories.map(({ node }, key) => {
                     return (
                         <div className='catcard' key={node.id}>
-                            {console.log(node)}
+                            {/* {console.log(node)} */}
                             <Image
                                 alt="Category Image"
                                 className="rounded-t-md border-gray-200	 border-b"

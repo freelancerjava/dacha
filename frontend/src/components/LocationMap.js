@@ -21,7 +21,8 @@
 
 // LocationMap.propTypes = {};
 
-// export default LocationMap;
+// export default LocationMap;   
+// https://www.erichowey.dev/writing/advanced-mapping-with-gatsby-and-react-leaflet/
 
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'

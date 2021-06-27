@@ -28,7 +28,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <PrimaryBtn text='Добавить свой объект' type="primary" />
+      <PrimaryBtn text='Добавить свой объект' type="primary" href='tel:+' />
 
       <ul className='site-map'>
         {data.allStrapiCategory.edges.map(({ node }) => {

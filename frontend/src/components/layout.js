@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -8,15 +8,22 @@ import Footer from "~/components/footer"
 import Header from "~/components/header"
 import MyHeader from "~/components/MyHeader"
 import Navbar from "./navbar"
-import { useOnClickOutside, useOnKeypress } from "~/helpers/hooks"
+import { useOnClickOutsideMenu, useOnKeypress, useScroll } from "~/helpers/hooks"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, ref }) => {
 
   const [open, setOpen] = useState(false);
 
-  const menu = useRef()
-  useOnClickOutside(menu, () => setOpen(false))
+  const navbar = useRef()
+  useOnClickOutsideMenu(navbar, () => setOpen(false))
   useOnKeypress(() => setOpen(false))
+  useScroll(navbar, () => setOpen(false), () => setOpen(true))
+
+  const [slideContent, setslideContent] = useState({
+    show: false,
+    title: "",
+    content: EmptyContent
+  });
 
   const data = useStaticQuery(graphql`
     query SiteNameQuery {
@@ -26,24 +33,19 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const setContent = () => {
+
+  }
+
   return (
-    <div className="bg-gray-50 relative body">
-      {/* <Header
-        setOpenModal={setOpenModal}
-        siteName={data.strapiGlobal.siteName || `Dachalar`}
-      /> */}
-      <MyHeader open={open} setOpen={setOpen}/>
-      {open && <Navbar ref={menu}/>}
-      
+    <div className="bg-gray-50 relative body" id='bodydiv' ref={ref}>
+      <MyHeader open={open} setOpen={setOpen} slideContent={slideContent} setslideContent={setslideContent} />
+      <Navbar open={open} ref={navbar} />
+
       <div className="flex flex-col max-w-screen-lg m-auto min-h-screen p-0 md:p-10">
         <main className="flex-1">{children}</main>
         <Footer />
       </div>
-      {/* {openModal && (
-        <div className="h-screen max-w-screen-lg m-auto fixed bottom-0 top-0 right-0 left-0 px-6 pb-10 pt-20 md:p-10 md:pt-40">
-          <SearchResults setOpenModal={setOpenModal} openModal={openModal} />
-        </div>
-      )} */}
     </div>
   )
 }
@@ -53,3 +55,10 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+const EmptyContent = () => {
+  return (
+    <div>
+    </div>
+  );
+};
